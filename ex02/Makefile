@@ -4,7 +4,7 @@ MANDATORY_FLAGS	:= -Wall -Wextra -Werror -std=c++98
 CFLAGS			:= $(MANDATORY_FLAGS)
 
 SRCS			:= \
-					test.cpp \
+					tests.cpp \
 					Account.cpp \
 
 BUILD_DIR		:= build
