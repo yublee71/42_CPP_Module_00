@@ -7,8 +7,8 @@ class Contact
 {
 
 public:
-	void setContact(std::string args[5]);
-	void getContact(void) const;
+	void setContact(void);
+	std::string getContact(std::string s);
 
 private:
 	std::string _firstName;

@@ -1,21 +1,68 @@
 #include "Contact.hpp"
-#include <iostream>
 
-void Contact::setContact(std::string args[5])
+void Contact::setContact(void)
 {
-	this->_firstName = args[0];
-	this->_lastName = args[1];
-	this->_nickName = args[2];
-	this->_phoneNumber = args[3];
-	this->_darkestSecret = args[4];
+	std::string user_input;
+
+	while (this->_firstName.empty())
+	{
+		std::cout << "Please enter the first name:"
+				  << std::endl;
+		std::getline(std::cin, user_input);
+		this->_firstName = user_input;
+	}
+	while (this->_lastName.empty())
+	{
+		std::cout << "Please enter the last name:"
+				  << std::endl;
+		std::getline(std::cin, user_input);
+		this->_lastName = user_input;
+	}
+	while (this->_nickName.empty())
+	{
+		std::cout << "Please enter the nickname:"
+				  << std::endl;
+		std::getline(std::cin, user_input);
+		this->_nickName = user_input;
+	}
+	while (this->_phoneNumber.empty())
+	{
+		std::cout << "Please enter the phone number:"
+				  << std::endl;
+		std::getline(std::cin, user_input);
+		this->_phoneNumber = user_input;
+	}
+	while (this->_darkestSecret.empty())
+	{
+		std::cout << "Please enter the darkest secret:"
+				  << std::endl;
+		std::getline(std::cin, user_input);
+		this->_darkestSecret = user_input;
+	}
 	return;
 }
 
-void Contact::getContact(void) const
+std::string Contact::getContact(std::string s)
 {
-	std::cout << "The first name is :" << this->_firstName;
-	std::cout << "The last name is :" << this->_lastName;
-	std::cout << "The nick name is :" << this->_nickName;
-	std::cout << "The phone number is :" << this->_phoneNumber;
-	std::cout << "The darkest secret is :" << this->_darkestSecret;
+	if (s == "first")
+		return (this->_firstName);
+	else if (s == "last")
+		return (this->_lastName);
+	else if (s == "nick")
+		return (this->_nickName);
+	else if (s == "phone")
+		return (this->_phoneNumber);
+	else if (s == "darkest")
+		return (this->_darkestSecret);
+	else if (s == "print")
+	{
+		std::cout << "The first name is :" << this->_firstName << std::endl;
+		std::cout << "The last name is :" << this->_lastName << std::endl;
+		std::cout << "The nick name is :" << this->_nickName << std::endl;
+		std::cout << "The phone number is :" << this->_phoneNumber << std::endl;
+		std::cout << "The darkest secret is :" << this->_darkestSecret << std::endl;
+		return "";
+	}
+	else
+		return "";
 }

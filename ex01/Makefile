@@ -6,6 +6,7 @@ CFLAGS			:= $(MANDATORY_FLAGS)
 SRCS			:= \
 					main.cpp \
 					Contact.cpp \
+					PhoneBook.cpp \
 
 BUILD_DIR		:= build
 OBJS			:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
