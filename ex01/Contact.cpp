@@ -75,8 +75,11 @@ void Contact::setContact(void)
 
 static void print_with_format(std::string str)
 {
-	if (str.size() > 10)
+	if (str.size() > 11)
+	{
 		str.erase(10);
+		str[9] = '.';
+	}
 	std::cout.width(10);
 	std::cout.fill('.');
 	std::cout << str;
