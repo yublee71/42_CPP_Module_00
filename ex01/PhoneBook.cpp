@@ -11,12 +11,14 @@ void PhoneBook::setPhoneBook(void)
 	int j = 0;
 
 	newContact.setContact();
+
 	while (i < MAX_CONTACT_NUM)
 	{
 		if (this->contacts[i].getFirstName().empty())
 			break;
 		i++;
 	}
+
 	if (i == MAX_CONTACT_NUM)
 	{
 		while (j + 1 < MAX_CONTACT_NUM)
@@ -30,6 +32,7 @@ void PhoneBook::setPhoneBook(void)
 		if (j == MAX_CONTACT_NUM)
 			i = 0;
 	}
+
 	this->contacts[i] = newContact;
 	return;
 }
@@ -43,10 +46,9 @@ void PhoneBook::printByIndex(void) const
 
 	if (std::cin.fail() || user_index < 1 || user_index > MAX_CONTACT_NUM)
 		std::cout << "Invalid index value. Please enter again: ";
-	// else if (this->contacts[user_index - 1].getFirstName().empty())
-	// 	std::cout << "This index is empty. Please enter again: ";
 	else
 		this->contacts[user_index - 1].printContact(user_index);
+
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

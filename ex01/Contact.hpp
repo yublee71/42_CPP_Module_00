@@ -8,10 +8,6 @@ class Contact
 
 public:
 	std::string getFirstName(void) const;
-	std::string getLastName(void) const;
-	std::string getNickName(void) const;
-	std::string getPhoneNumber(void) const;
-	std::string getDarkestSecret(void) const;
 	time_t getAddedTime(void) const;
 	void setContact(void);
 	void printContact(int index) const;
