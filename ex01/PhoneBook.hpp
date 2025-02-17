@@ -9,7 +9,7 @@ class PhoneBook
 
 public:
 	void setPhoneBook(void);
-	void getPhoneBook(void);
+	void printByIndex(void) const;
 
 private:
 	Contact contacts[MAX_CONTACT_NUM];

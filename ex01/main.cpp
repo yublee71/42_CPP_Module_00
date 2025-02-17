@@ -2,6 +2,7 @@
 #include "Contact.hpp"
 
 #include <iostream>
+#include <limits>
 
 int main(void)
 {
@@ -17,10 +18,9 @@ int main(void)
 		if (user_input == possible_user_input[0])
 			PhoneBook.setPhoneBook();
 		else if (user_input == possible_user_input[1])
-			std::cout << "SEARCH entered" << std::endl;
+			PhoneBook.printByIndex();
 		else if (user_input == possible_user_input[2])
 		{
-			PhoneBook.getPhoneBook();
 			std::cout << "Exit the program" << std::endl;
 			break;
 		}

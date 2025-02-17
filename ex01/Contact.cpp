@@ -1,4 +1,34 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <ctime>
+#include <sstream>
 #include "Contact.hpp"
+
+std::string Contact::getFirstName(void) const
+{
+	return (this->_firstName);
+}
+std::string Contact::getLastName(void) const
+{
+	return (this->_lastName);
+}
+std::string Contact::getNickName(void) const
+{
+	return (this->_nickName);
+}
+std::string Contact::getPhoneNumber(void) const
+{
+	return (this->_phoneNumber);
+}
+std::string Contact::getDarkestSecret(void) const
+{
+	return (this->_darkestSecret);
+}
+std::time_t Contact::getAddedTime(void) const
+{
+	return (this->_addedTime);
+}
 
 void Contact::setContact(void)
 {
@@ -39,30 +69,32 @@ void Contact::setContact(void)
 		std::getline(std::cin, user_input);
 		this->_darkestSecret = user_input;
 	}
+	std::time(&this->_addedTime);
 	return;
 }
 
-std::string Contact::getContact(std::string s)
+static void print_with_format(std::string str)
 {
-	if (s == "first")
-		return (this->_firstName);
-	else if (s == "last")
-		return (this->_lastName);
-	else if (s == "nick")
-		return (this->_nickName);
-	else if (s == "phone")
-		return (this->_phoneNumber);
-	else if (s == "darkest")
-		return (this->_darkestSecret);
-	else if (s == "print")
-	{
-		std::cout << "The first name is :" << this->_firstName << std::endl;
-		std::cout << "The last name is :" << this->_lastName << std::endl;
-		std::cout << "The nick name is :" << this->_nickName << std::endl;
-		std::cout << "The phone number is :" << this->_phoneNumber << std::endl;
-		std::cout << "The darkest secret is :" << this->_darkestSecret << std::endl;
-		return "";
-	}
-	else
-		return "";
+	if (str.size() > 10)
+		str.erase(10);
+	std::cout.width(10);
+	std::cout.fill('.');
+	std::cout << str;
+}
+
+void Contact::printContact(int index) const
+{
+	std::ostringstream tmp;
+	std::string indexStr;
+
+	tmp << index;
+	indexStr = tmp.str();
+	print_with_format(indexStr);
+	std::cout << "|";
+	print_with_format(this->_firstName);
+	std::cout << "|";
+	print_with_format(this->_lastName);
+	std::cout << "|";
+	print_with_format(this->_nickName);
+	std::cout << std::endl;
 }
