@@ -7,33 +7,26 @@ void PhoneBook::setPhoneBook(void)
 {
 	Contact newContact;
 	Contact oldestContact;
-	int i = 0;
-	int j = 0;
+	int index = 0;
 
 	newContact.setContact();
 
-	while (i < MAX_CONTACT_NUM)
+	while (index < MAX_CONTACT_NUM)
 	{
-		if (this->contacts[i].getFirstName().empty())
+		if (this->contacts[index].getFirstName().empty())
 			break;
-		i++;
+		index++;
 	}
 
-	if (i == MAX_CONTACT_NUM)
+	if (index == MAX_CONTACT_NUM)
 	{
-		while (j + 1 < MAX_CONTACT_NUM)
-		{
-			if (this->contacts[j].getAddedTime() > this->contacts[j + 1].getAddedTime())
-				break;
-			j++;
-		}
-		j++;
-		i = j;
-		if (j == MAX_CONTACT_NUM)
-			i = 0;
+		index = 0;
+		for (int i = 1; i < MAX_CONTACT_NUM; i++)
+			if (this->contacts[i].getAddedTime() < this->contacts[index].getAddedTime())
+				index = i;
 	}
 
-	this->contacts[i] = newContact;
+	this->contacts[index] = newContact;
 	return;
 }
 
