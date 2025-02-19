@@ -3,7 +3,7 @@
 #include <limits>
 #include "PhoneBook.hpp"
 
-void PhoneBook::setPhoneBook(void)
+void PhoneBook::add(void)
 {
 	Contact newContact;
 	Contact oldestContact;
@@ -30,7 +30,7 @@ void PhoneBook::setPhoneBook(void)
 	return;
 }
 
-void PhoneBook::printByIndex(void) const
+void PhoneBook::search(void) const
 {
 	int user_index;
 

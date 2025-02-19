@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 #define MAX_CONTACT_NUM 8
 
 #include "Contact.hpp"
@@ -8,8 +8,8 @@ class PhoneBook
 {
 
 public:
-	void setPhoneBook(void);
-	void printByIndex(void) const;
+	void add(void);
+	void search(void) const;
 
 private:
 	Contact contacts[MAX_CONTACT_NUM];
