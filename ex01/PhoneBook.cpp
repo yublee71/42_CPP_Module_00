@@ -1,47 +1,54 @@
-#include <string>
-#include <iostream>
-#include <limits>
 #include "PhoneBook.hpp"
+
+#include <iostream>
+#include <string>
+#include <limits>
+#include <cstdlib>
 
 void PhoneBook::add(void)
 {
 	Contact newContact;
-	Contact oldestContact;
-	int index = 0;
 
 	newContact.setContact();
+	newContact = _contacts[_index % MAX_CONTACT_NUM];
+	_index++;
 
-	while (index < MAX_CONTACT_NUM)
-	{
-		if (this->contacts[index].getFirstName().empty())
-			break;
-		index++;
-	}
-
-	if (index == MAX_CONTACT_NUM)
-	{
-		index = 0;
-		for (int i = 1; i < MAX_CONTACT_NUM; i++)
-			if (this->contacts[i].getAddedTime() < this->contacts[index].getAddedTime())
-				index = i;
-	}
-
-	this->contacts[index] = newContact;
 	return;
+}
+
+static void print_with_format(std::string str)
+{
+	if (str.size() > 11)
+	{
+		str.erase(10);
+		str[9] = '.';
+	}
+	std::cout.width(10);
+	std::cout.fill('.');
+	std::cout << str;
 }
 
 void PhoneBook::search(void) const
 {
-	int user_index;
+	std::string user_input;
+	int index;
 
-	std::cout << "Enter an index: ";
-	std::cin >> user_index;
+	std::cout << "Enter an index to search (from 1 to 8): ";
+	if (!std::getline(std::cin, user_input))
+		return;
 
-	if (std::cin.fail() || user_index < 1 || user_index > MAX_CONTACT_NUM)
+	index = std::atoi(user_input.c_str());
+	if (index < 1 || index > MAX_CONTACT_NUM)
 		std::cout << "Invalid index value. Please enter again: ";
 	else
-		this->contacts[user_index - 1].printContact(user_index);
-
-	std::cin.clear();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	{
+		print_with_format(user_input);
+		std::cout << "|";
+		print_with_format(_contacts[index - 1].getFirstName());
+		std::cout << "|";
+		print_with_format(_contacts[index - 1].getLastName());
+		std::cout << "|";
+		print_with_format(_contacts[index - 1].getNickName());
+		std::cout << std::endl;
+	}
 }

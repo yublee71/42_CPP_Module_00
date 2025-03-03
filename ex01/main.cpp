@@ -1,5 +1,4 @@
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
 
 #include <iostream>
 
@@ -8,7 +7,7 @@ int main(void)
 	PhoneBook PhoneBook;
 	std::string user_input;
 
-	while (true)
+	while (!std::cin.fail())
 	{
 		std::cout << "Please enter one of the three commands: ADD, SEARCH, EXIT" << std::endl;
 		std::getline(std::cin, user_input);
@@ -16,13 +15,12 @@ int main(void)
 			PhoneBook.add();
 		else if (user_input == "SEARCH")
 			PhoneBook.search();
-		else if (user_input == "EXIT" || std::cin.eof())
-		{
-			std::cout << "Exiting the program..." << std::endl;
+		else if (user_input == "EXIT")
 			break;
-		}
-		else
+		else if (!user_input.empty())
 			std::cout << "Invalid command. Please try again." << std::endl;
+		user_input.clear();
 	}
+	std::cout << "Exiting the program..." << std::endl;
 	return (0);
 }

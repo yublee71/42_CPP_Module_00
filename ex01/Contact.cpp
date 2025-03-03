@@ -1,88 +1,53 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-#include <ctime>
-#include <sstream>
 #include "Contact.hpp"
 
-std::string Contact::getFirstName(void) const
-{
-	return (this->_firstName);
-}
-
-std::time_t Contact::getAddedTime(void) const
-{
-	return (this->_addedTime);
-}
+#include <iostream>
+#include <string>
+#include <limits>
 
 void Contact::setContact(void)
 {
-	std::string user_input;
+	std::string fields[FIELD_NUM] =
+		{"First name", "Last name", "Nick name", "Phone number", "Darkest secret"};
+	std::string user_input[FIELD_NUM];
 
-	while (this->_firstName.empty())
+	for (int i = 0; i < FIELD_NUM; i++)
 	{
-		std::cout << "Please enter the first name:"
-				  << std::endl;
-		std::getline(std::cin, user_input);
-		this->_firstName = user_input;
+		while (user_input[i].empty())
+		{
+			std::cout << fields[i] << ": ";
+			std::getline(std::cin, user_input[i]);
+			if (std::cin.eof())
+				return;
+		}
 	}
-	while (this->_lastName.empty())
-	{
-		std::cout << "Please enter the last name:"
-				  << std::endl;
-		std::getline(std::cin, user_input);
-		this->_lastName = user_input;
-	}
-	while (this->_nickName.empty())
-	{
-		std::cout << "Please enter the nickname:"
-				  << std::endl;
-		std::getline(std::cin, user_input);
-		this->_nickName = user_input;
-	}
-	while (this->_phoneNumber.empty())
-	{
-		std::cout << "Please enter the phone number:"
-				  << std::endl;
-		std::getline(std::cin, user_input);
-		this->_phoneNumber = user_input;
-	}
-	while (this->_darkestSecret.empty())
-	{
-		std::cout << "Please enter the darkest secret:"
-				  << std::endl;
-		std::getline(std::cin, user_input);
-		this->_darkestSecret = user_input;
-	}
-	std::time(&this->_addedTime);
+
+	_firstName = fields[0];
+	_lastName = fields[1];
+	_nickName = fields[2];
+	_phoneNumber = fields[3];
+	_darkestSecret = fields[4];
+
 	return;
 }
 
-static void print_with_format(std::string str)
+std::string Contact::getFirstName(void) const
 {
-	if (str.size() > 11)
-	{
-		str.erase(10);
-		str[9] = '.';
-	}
-	std::cout.width(10);
-	std::cout.fill('.');
-	std::cout << str;
+	std::cout << _firstName;
+	return _firstName;
 }
-
-void Contact::printContact(int index) const
+std::string Contact::getLastName(void) const
 {
-	std::ostringstream tmp;
-	std::string indexStr;
-
-	tmp << index;
-	indexStr = tmp.str();
-	print_with_format(indexStr);
-	std::cout << "|";
-	print_with_format(this->_firstName);
-	std::cout << "|";
-	print_with_format(this->_lastName);
-	std::cout << "|";
-	print_with_format(this->_nickName);
-	std::cout << std::endl;
+	return _lastName;
+}
+std::string Contact::getNickName(void) const
+{
+	return _nickName;
+}
+std::string Contact::getPhoneNumber(void) const
+{
+	return _phoneNumber;
+}
+std::string Contact::getDarkestSecret(void) const
+{
+	return _darkestSecret;
 }
