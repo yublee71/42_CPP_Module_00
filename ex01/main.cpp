@@ -21,6 +21,6 @@ int main(void)
 			std::cout << "Invalid command. Please try again." << std::endl;
 		user_input.clear();
 	}
-	std::cout << "Exiting the program..." << std::endl;
+	std::cout << "\nExiting the program..." << std::endl;
 	return (0);
 }
