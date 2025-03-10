@@ -34,21 +34,25 @@ void PhoneBook::search(void) const
 	int index;
 
 	std::cout << "Enter an index to search (from 1 to 8): ";
-	if (!std::getline(std::cin, user_input))
-		return;
-
-	index = std::atoi(user_input.c_str());
-	if (index < 1 || index > MAX_CONTACT_NUM)
-		std::cout << "Invalid index value. Please enter again: ";
-	else
+	while (true)
 	{
-		print_with_format(user_input);
-		std::cout << "|";
-		print_with_format(_contacts[index - 1].getFirstName());
-		std::cout << "|";
-		print_with_format(_contacts[index - 1].getLastName());
-		std::cout << "|";
-		print_with_format(_contacts[index - 1].getNickName());
-		std::cout << std::endl;
+		if (!std::getline(std::cin, user_input))
+			return;
+
+		index = std::atoi(user_input.c_str());
+		if (index < 1 || index > MAX_CONTACT_NUM)
+			std::cout << "Invalid index value. Please enter again: ";
+		else
+		{
+			print_with_format(user_input);
+			std::cout << "|";
+			print_with_format(_contacts[index - 1].getFirstName());
+			std::cout << "|";
+			print_with_format(_contacts[index - 1].getLastName());
+			std::cout << "|";
+			print_with_format(_contacts[index - 1].getNickName());
+			std::cout << std::endl;
+			return;
+		}
 	}
 }
