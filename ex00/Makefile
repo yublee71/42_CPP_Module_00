@@ -3,7 +3,7 @@ CC				:= c++
 MANDATORY_FLAGS	:= -Wall -Wextra -Werror -std=c++98
 CFLAGS			:= $(MANDATORY_FLAGS)
 
-SRCS			:= megaphone.cpp \
+SRCS			:= megaphone.cpp
 
 BUILD_DIR		:= build
 OBJS			:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
@@ -28,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
