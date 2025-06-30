@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 
 $(BUILD_DIR)/%.o: %.cpp
 		@if [ ! -d $(@D) ]; then mkdir -pv $(@D); fi
-		$(CC) $(CFLAGS) -c $^ -o $@
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 		$(RM) $(RMFLAGS) $(BUILD_DIR)
