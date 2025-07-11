@@ -6,6 +6,8 @@
 #include <sstream>
 #include <string>
 
+int PhoneBook::index_ = 0;
+
 void PhoneBook::add(void) {
   Contact new_contact;
 

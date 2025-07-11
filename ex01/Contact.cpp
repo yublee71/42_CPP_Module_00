@@ -13,6 +13,7 @@ void Contact::setContact(void) {
 
   for (int i = 0; i < FIELD_NUM; i++) {
     while (user_input[i].empty()) {
+      user_input[i] = "";
       std::cout << fields[i];
       std::getline(std::cin, user_input[i]);
       if (std::cin.eof())

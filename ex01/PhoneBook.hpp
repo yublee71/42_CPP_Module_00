@@ -12,7 +12,7 @@ public:
 
 private:
   Contact contacts_[MAX_CONTACT_NUM];
-  int index_;
+  static int index_;
 };
 
 #endif
