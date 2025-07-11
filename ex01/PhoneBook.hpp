@@ -5,16 +5,14 @@
 
 #include "Contact.hpp"
 
-class PhoneBook
-{
-
+class PhoneBook {
 public:
-	void add(void);
-	void search(void) const;
+  void add(void);
+  void search(void) const;
 
 private:
-	Contact _contacts[MAX_CONTACT_NUM];
-	int _index;
+  Contact contacts_[MAX_CONTACT_NUM];
+  int index_;
 };
 
 #endif

@@ -1,27 +1,23 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-#define FIELD_NUM 5
-
 #include <string>
 
-class Contact
-{
-
+class Contact {
 public:
-	void setContact(void);
-	std::string getFirstName(void) const;
-	std::string getLastName(void) const;
-	std::string getNickName(void) const;
-	std::string getPhoneNumber(void) const;
-	std::string getDarkestSecret(void) const;
+  void setContact(void);
+  std::string getFirstName(void) const;
+  std::string getLastName(void) const;
+  std::string getNickName(void) const;
+  std::string getPhoneNumber(void) const;
+  std::string getDarkestSecret(void) const;
 
 private:
-	std::string _firstName;
-	std::string _lastName;
-	std::string _nickName;
-	std::string _phoneNumber;
-	std::string _darkestSecret;
+  std::string first_name_;
+  std::string last_name_;
+  std::string nickname_;
+  std::string phone_number_;
+  std::string darkest_secret_;
 };
 
 #endif
