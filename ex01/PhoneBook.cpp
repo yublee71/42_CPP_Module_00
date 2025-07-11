@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <limits>
+#include <sstream>
 #include <string>
 
 void PhoneBook::add(void) {
@@ -11,7 +12,6 @@ void PhoneBook::add(void) {
   new_contact.setContact();
   new_contact = contacts_[index_ % MAX_CONTACT_NUM];
   index_++;
-
   return;
 }
 
@@ -27,7 +27,24 @@ static void print_with_format(std::string str) {
 
 void PhoneBook::search(void) const {
   std::string user_input;
+  std::string index_str;
+  std::stringstream index_str_stream;
   int index;
+
+  for (int i = 0; i < MAX_CONTACT_NUM; i++) {
+    index_str_stream.str("");
+    index_str_stream.clear();
+    index_str_stream << i + 1;
+    index_str = index_str_stream.str();
+    print_with_format(index_str);
+    std::cout << "|";
+    print_with_format(contacts_[i].getFirstName());
+    std::cout << "|";
+    print_with_format(contacts_[i].getLastName());
+    std::cout << "|";
+    print_with_format(contacts_[i].getNickName());
+    std::cout << std::endl;
+  }
 
   std::cout << "Enter an index to search (from 1 to 8): ";
   while (true) {
@@ -37,14 +54,11 @@ void PhoneBook::search(void) const {
     if (index < 1 || index > MAX_CONTACT_NUM)
       std::cout << "Invalid index value. Please enter again: ";
     else {
-      print_with_format(user_input);
-      std::cout << "|";
-      print_with_format(contacts_[index - 1].getFirstName());
-      std::cout << "|";
-      print_with_format(contacts_[index - 1].getLastName());
-      std::cout << "|";
-      print_with_format(contacts_[index - 1].getNickName());
-      std::cout << std::endl;
+      std::cout << contacts_[index - 1].getFirstName() << std::endl;
+      std::cout << contacts_[index - 1].getLastName() << std::endl;
+      std::cout << contacts_[index - 1].getNickName() << std::endl;
+      std::cout << contacts_[index - 1].getPhoneNumber() << std::endl;
+      std::cout << contacts_[index - 1].getDarkestSecret() << std::endl;
       return;
     }
   }

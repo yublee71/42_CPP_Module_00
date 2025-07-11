@@ -1,14 +1,14 @@
 #include "Contact.hpp"
 
-#define FIELD_NUM 5
-
 #include <iostream>
 #include <limits>
 #include <string>
 
+const std::string Contact::fields[FIELD_NUM] = {
+    "First name: ", "Last name: ", "Nickname: ", "Phone number: ",
+    "Darkest secret: "};
+
 void Contact::setContact(void) {
-  std::string fields[FIELD_NUM] = {"First name", "Last name", "Nickname",
-                                   "Phone number", "Darkest secret"};
   std::string user_input[FIELD_NUM];
 
   for (int i = 0; i < FIELD_NUM; i++) {
@@ -20,19 +20,16 @@ void Contact::setContact(void) {
     }
   }
 
-  first_name_ = fields[0];
-  last_name_ = fields[1];
-  nickname_ = fields[2];
-  phone_number_ = fields[3];
-  darkest_secret_ = fields[4];
+  first_name_ = user_input[0];
+  last_name_ = user_input[1];
+  nickname_ = user_input[2];
+  phone_number_ = user_input[3];
+  darkest_secret_ = user_input[4];
 
   return;
 }
 
-std::string Contact::getFirstName(void) const {
-  std::cout << first_name_;
-  return first_name_;
-}
+std::string Contact::getFirstName(void) const { return first_name_; }
 
 std::string Contact::getLastName(void) const { return last_name_; }
 

@@ -3,6 +3,8 @@
 
 #include <string>
 
+#define FIELD_NUM 5
+
 class Contact {
 public:
   void setContact(void);
@@ -11,6 +13,7 @@ public:
   std::string getNickName(void) const;
   std::string getPhoneNumber(void) const;
   std::string getDarkestSecret(void) const;
+  static const std::string fields[FIELD_NUM];
 
 private:
   std::string first_name_;
