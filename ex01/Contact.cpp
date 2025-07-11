@@ -13,7 +13,7 @@ void Contact::setContact(void) {
 
   for (int i = 0; i < FIELD_NUM; i++) {
     while (user_input[i].empty()) {
-      std::cout << fields[i] << ": ";
+      std::cout << fields[i];
       std::getline(std::cin, user_input[i]);
       if (std::cin.eof())
         return;
@@ -38,3 +38,11 @@ std::string Contact::getNickName(void) const { return nickname_; }
 std::string Contact::getPhoneNumber(void) const { return phone_number_; }
 
 std::string Contact::getDarkestSecret(void) const { return darkest_secret_; }
+
+void Contact::printContact(void) const {
+  std::cout << fields[0] << first_name_ << std::endl;
+  std::cout << fields[1] << last_name_ << std::endl;
+  std::cout << fields[2] << nickname_ << std::endl;
+  std::cout << fields[3] << phone_number_ << std::endl;
+  std::cout << fields[4] << darkest_secret_ << std::endl;
+}

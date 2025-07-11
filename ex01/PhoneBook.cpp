@@ -10,7 +10,7 @@ void PhoneBook::add(void) {
   Contact new_contact;
 
   new_contact.setContact();
-  new_contact = contacts_[index_ % MAX_CONTACT_NUM];
+  contacts_[index_ % MAX_CONTACT_NUM] = new_contact;
   index_++;
   return;
 }
@@ -54,11 +54,7 @@ void PhoneBook::search(void) const {
     if (index < 1 || index > MAX_CONTACT_NUM)
       std::cout << "Invalid index value. Please enter again: ";
     else {
-      std::cout << contacts_[index - 1].getFirstName() << std::endl;
-      std::cout << contacts_[index - 1].getLastName() << std::endl;
-      std::cout << contacts_[index - 1].getNickName() << std::endl;
-      std::cout << contacts_[index - 1].getPhoneNumber() << std::endl;
-      std::cout << contacts_[index - 1].getDarkestSecret() << std::endl;
+      contacts_[index - 1].printContact();
       return;
     }
   }

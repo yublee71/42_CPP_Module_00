@@ -13,6 +13,9 @@ public:
   std::string getNickName(void) const;
   std::string getPhoneNumber(void) const;
   std::string getDarkestSecret(void) const;
+
+  void printContact(void) const;
+
   static const std::string fields[FIELD_NUM];
 
 private:
