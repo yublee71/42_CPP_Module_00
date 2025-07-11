@@ -6,10 +6,10 @@
 #include <string>
 
 void PhoneBook::add(void) {
-  Contact newContact;
+  Contact new_contact;
 
-  newContact.setContact();
-  newContact = contacts_[index_ % MAX_CONTACT_NUM];
+  new_contact.setContact();
+  new_contact = contacts_[index_ % MAX_CONTACT_NUM];
   index_++;
 
   return;

@@ -33,6 +33,7 @@ std::string Contact::getFirstName(void) const {
   std::cout << first_name_;
   return first_name_;
 }
+
 std::string Contact::getLastName(void) const { return last_name_; }
 
 std::string Contact::getNickName(void) const { return nickname_; }
